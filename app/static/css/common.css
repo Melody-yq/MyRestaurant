@@ -1,0 +1,161 @@
+#user{
+    width:90%;
+    height:60px;
+    border:1px solid red;
+    text-align: center;
+    margin-top: 20px;
+}
+#ul1{
+    width:100%;
+    height:40px;
+    background-color:#f5f5f5;
+    border-radius: 5px;
+    line-height:30px;
+    margin-top:0px;
+}
+#li1{
+    list-style-type: none;
+    float: left;
+    margin-left: -35px;
+    font-size: 16px;
+    margin-top:8px;
+}
+#li2{
+    list-style-type: none;
+    float: right;
+    font-size: 20px;
+    margin-top: 8px;
+}
+.introduce{
+    width:100%;
+    height:150px;
+}
+.introduce1{
+    width:23%;
+    height:100%;
+    float:left;
+}
+#divIntro{
+    height:120px;
+    float:left;
+    text-align: center;
+}
+.text_table{
+    border: 1px solid blue;
+    width:100%;
+
+}
+.text_table tr{
+    border: 1px solid red;
+    height:30px;
+    width:100%;
+    text-align: center;
+}
+#td1{
+    width:50%;
+}
+#td11{
+    width:20%;
+}
+#td12{
+    width:30%;
+}
+#td2{
+    width:50px;
+}
+#td3{
+    width:70%;
+    text-align: left;
+}
+#td4{
+    width:10%;
+    text-align: center;
+}
+#fenye{
+    margin-left: 434px;
+}
+#divN{
+    list-style-type: none;
+    margin-left: 5px;
+}
+#divG{
+    margin-top:75px;
+    list-style-type: none;
+}
+button{
+    background-color: aliceblue;
+}
+.mPeople{
+    margin-left: 105px;
+    width:1165px;
+    height: 1200px;
+}
+.introduce2{
+    width:20%;
+    height:150px;
+    float:left;
+}
+.mpul{
+    width:1165px;
+    margin-left: 105px;
+    background-color:deepskyblue;
+    height:50px;
+    line-height: 50px;
+    border-radius: 0 5px 5px 0;
+}
+.mTable{
+    border: 1px solid green;
+    width:95%;
+    margin-left: 25px;
+    margin-top: 15px;
+    mso-cellspacing: 2px;
+}
+.mTable tr{
+    height:30px;
+    text-align: center;
+}
+#img{
+    width:140px;
+    height:120px;
+}
+.div_icon{
+    width:200px;
+    height:150px;
+    margin:10px 0;
+}
+.Icon{
+    width:160px;
+    height:100%;
+
+}
+#col-md-4{
+    border: 1px solid green;
+    margin-left:-15px;
+    width:180px;
+    height:120px;
+    background-color: ivory
+
+}
+#inf1{
+    width:100%;
+    height:300px;
+    background-color: darkturquoise;
+}
+.inf1{
+    width:40%;
+    height:100%;
+    margin-left: 8px;
+    float:left;
+}
+#infoTable{
+    margin-top: 10px;
+    font-size: 20px;
+    border-collapse:separate;
+    border-spacing:15px 15px;
+}
+.nav{
+    width:1170px;
+    height:90px;
+    background-color: whitesmoke;
+}
+

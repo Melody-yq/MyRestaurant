@@ -1,0 +1,29 @@
+{% include 'common/kesheheader.html' %}
+{% from 'common/macro.html' import pagination_show %}
+{#{% block title %}博主表单{% endblock %}#}
+{% block page_content %}
+    <ul class="mpul">博客列表</ul>
+    <div class="mPeople">
+        {% for post in posts %}
+        <div class="media">
+            <div class="media-left media-middle">
+                <a href="#">
+                    <img class="media-object" src="{{ url_for('static',filename='upload/'+post.user.icon) }}" alt="用户头像">
+                </a>
+            </div>
+            <div class="media-body">
+                <div style="float: right">{{ moment(post.timestamp).fromNow() }}</div>
+                <h4 class="media-heading">{{ post.user.username }}</h4>
+                {{ post.content }}
+                ...
+            </div>
+        </div>
+    {% endfor %}
+    {{ pagination_show(pagination,'main.more_message') }}
+    </div>
+{% endblock %}
+{% block scripts %}
+{#    {{ super() }}#}
+    {{ moment.include_moment() }}
+    {{ moment.locale('zh-CN') }}
+{% endblock %}

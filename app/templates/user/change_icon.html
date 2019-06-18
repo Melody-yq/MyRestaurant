@@ -1,0 +1,9 @@
+{% extends 'common/base.html' %}
+
+{% block title %}修改头像
+{% endblock %}
+
+{% block page_content %}
+    <img src="{{ img_url }}" alt="美女">
+    {{ wtf.quick_form(form) }}
+{% endblock %}

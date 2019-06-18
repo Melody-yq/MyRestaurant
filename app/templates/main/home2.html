@@ -1,0 +1,207 @@
+{% extends 'common/base.html' %}
+{% from 'common/macro.html' import pagination_show,people,message%}
+{% block title %}
+
+    首页
+{% endblock %}
+
+{% block page_content %}
+{#    <div class="container">#}
+{#        <div class="row clearfix">#}
+{#            <div class="col-md-6 column">#}
+{#                <div class="carousel slide" id="carousel-775341">#}
+{#                    <ol class="carousel-indicators">#}
+{#                        <li class="active" data-slide-to="0" data-target="#carousel-775341">#}
+{#                        </li>#}
+{#                        <li data-slide-to="1" data-target="#carousel-775341">#}
+{#                        </li>#}
+{#                        <li data-slide-to="2" data-target="#carousel-775341">#}
+{#                        </li>#}
+{#                    </ol>#}
+{#                    <div class="carousel-inner">#}
+{#                        <div class="item active">#}
+{#                            <img src="{{ url_for('static',filename='images/4.jpg') }}"/>#}
+{#                            <div class="carousel-caption">#}
+{#                                <h4>#}
+{#                                    First Thumbnail label#}
+{#                                </h4>#}
+{#                                <p>#}
+{#                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi#}
+{#                                    porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.#}
+{#                                </p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="item">#}
+{#                            <img src="{{ url_for('static',filename='images/5.jpg') }}"/>#}
+{#                            <div class="carousel-caption">#}
+{#                                <h4>#}
+{#                                    Second Thumbnail label#}
+{#                                </h4>#}
+{#                                <p>#}
+{#                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi#}
+{#                                    porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.#}
+{#                                </p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="item">#}
+{#                            <img src="{{ url_for('static',filename='images/6.jpg') }}"/>#}
+{#                            <div class="carousel-caption">#}
+{#                                <h4>#}
+{#                                    Third Thumbnail label#}
+{#                                </h4>#}
+{#                                <p>#}
+{#                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi#}
+{#                                    porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.#}
+{#                                </p>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <a class="left carousel-control" href="#carousel-775341" data-slide="prev"><span#}
+{#                            class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control"#}
+{#                                                                                    href="#carousel-775341"#}
+{#                                                                                    data-slide="next"><span#}
+{#                        class="glyphicon glyphicon-chevron-right"></span></a>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="col-md-4 column">#}
+{#                <h2>#}
+{#                    每日精选#}
+{#                </h2>#}
+{#                <ul style="margin: 20px">#}
+{#                    <li><a href="http://www.duwenzhang.com/wenzhang/renshengzheli/chenggong/20070905/914.html">要养成成功的习惯</a></li>#}
+{#                    <li><a href="http://www.duwenzhang.com/wenzhang/shige/shuqingshi/20190114/398414.html">花开不败香自来</a></li>#}
+{#                    <li><a href="http://www.duwenzhang.com/wenzhang/youqingwenzhang/20070828/853.html">友谊是一株树</a></li>#}
+{#                    <li><a href="http://www.duwenzhang.com/wenzhang/shenghuosuibi/shenghuoganwu/20181015/395031.html">时间面前，一切终将释怀</a></li>#}
+{#                    <li><a href="http://www.duwenzhang.com/wenzhang/renshengzheli/20190107/398150.html">当你改变不了环境的时候，试着改变自己</a></li>#}
+{#                    <li><a href="http://www.duwenzhang.com/wenzhang/youqingwenzhang/20070808/621.html">关于友情</a></li>#}
+{#                    <li><a href="http://www.duwenzhang.com/wenzhang/jingdianwenzhang/20070712/174.html">世界上最快乐的事</a></li>#}
+{#                    <li><a href="http://www.duwenzhang.com/wenzhang/jingdianwenzhang/20070714/232.html">经营好自己一生中的三天</a></li>#}
+{##}
+{#                </ul>#}
+{#                <p>#}
+{#                    <a class="btn" href="{{ url_for('main.index') }}">View details »</a>#}
+{#                </p>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="row clearfix" style="margin-top: 50px">#}
+{#            <div class="col-md-12 column">#}
+{#                <blockquote>#}
+{#                    <p>#}
+{#                        Good company on the road is the shortest cut.#}
+{#                    </p>#}
+{#                </blockquote>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+    <div class="container">
+	    <div class="row clearfix">
+		<div class="col-md-12 column">
+{#			<ul class="breadcrumb">#}
+{#				<li>#}
+{#					 <a href="{{ url_for("main.index") }}">Home</a>#}
+{#				</li>#}
+{#				<li>#}
+{#					 <a href="{{ url_for("main.publish") }}">我要发帖</a>#}
+{#				</li>#}
+{#                <li>#}
+{#                    <a href="{{ url_for('main.information') }}">#}
+{#                        进入个人中心#}
+{#                    </a>#}
+{#                </li>#}
+{#			</ul>#}
+            <ul id="ul1">
+                    <li id="li1">人气推荐</li>
+                    <li id="li2">
+                        <a href="{{ url_for("main.more_people")}}" class="glyphicon glyphicon-paperclip" aria-hidden="true"></a>
+                        <a href="{{ url_for("main.more_people") }}">更多</a>
+                    </li>
+            </ul>
+			<div class="introduce">
+{#                <div class="introduce1">#}
+{#                    <div style="float:left;border:1px solid red;">#}
+{#                        <img id="img" src="static/images/header2.jpg" >#}
+{#                    </div>#}
+{#                    <div id="divIntro">#}
+{#                        <div id="divN">{{ username }}</div>#}
+{#                        <div id="divG">#}
+{#                            <a href="#"><button>关注</button></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="introduce1">#}
+{#                    <div style="float:left;border:1px solid red;">#}
+{#                        <img id="img" src="static/images/header2.jpg">#}
+{#                    </div>#}
+{#                    <div id="divIntro">#}
+{#                        <div id="divN">{{ username }}</div>#}
+{#                        <div id="divG">#}
+{#                            <a href="#"><button>关注</button></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{#                <div class="introduce1">#}
+{#                    <div style="float:left;border:1px solid red;">#}
+{#                        <img id="img" src="static/images/header2.jpg">#}
+{#                    </div>#}
+{#                    <div id="divIntro">#}
+{#                        <div id="divN">{{ username }}</div>#}
+{#                        <div id="divG">#}
+{#                            <a href="#"><button>关注</button></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{#                <div class="introduce1">#}
+{#                    <div style="float:left;border:1px solid red;">#}
+{#                        <img id="img"   src="static/images/header1.jpg" >#}
+{#                    </div>#}
+{#                    <div id="divIntro">#}
+{#                        <div id="divN">{{ username }}</div>#}
+{#                        <div id="divG">#}
+{#                            <a href="#"><button >关注</button></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                </div>#}
+                {{ people(users)}}
+{#                {% for i in range(4) %}#}
+{#                    {{ peopleFiled("images/header1.jpg",username) }}#}
+{#                {% endfor %}#}
+
+            </div>
+            <!--帖子-->
+            <div class="text">
+                <ul id="ul1">
+                    <li id="li1">热帖</li>
+                    <li id="li2">
+                        <a href="{{ url_for("main.more_message")}}" class="glyphicon glyphicon-paperclip" aria-hidden="true"></a>
+                        <a href="{{ url_for("main.more_message")}}">更多</a>
+                    </li>
+                </ul>
+                <table class="text_table">
+                    <tr>
+                        <td>标题</td>
+                        <td>发帖人</td>
+                        <td>回复数</td>
+                        <td>人气</td>
+                    </tr>
+{#                    {% for message in messages %}#}
+{#                        <tr>#}
+{#                            <td id="td3"><a href="#">{{ message.title }}</a></td>#}
+{#                            <td id="td4">{{ message.author }}</td>#}
+{#                            <td id="td4">{{ message.answerCounts }}</td>#}
+{#                            <td id="td4">{{ message.zan }}</td>#}
+{#                        </tr>#}
+{#                    {% endfor %}#}
+{#                    {{ message(messages,'main.index') }}#}
+                </table>
+            </div>
+		</div>
+	</div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+{% endblock %}

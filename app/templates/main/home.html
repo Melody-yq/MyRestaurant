@@ -1,0 +1,56 @@
+{% from 'common/macro.html' import message,people,post,pagination_show %}
+{% extends 'common/base.html' %}
+{% block title %}首页{% endblock %}
+{% block styles %}
+    {{ supper }}
+    <link rel="stylesheet" href="{{ url_for('static',filename="css/common.css") }}">
+{% endblock %}
+{% block page_content %}
+    {% include 'common/kesheheader.html' %}
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+
+                <ul id="ul1">
+                    <li id="li1">人气推荐</li>
+                    <li id="li2">
+                        <a href="{{ url_for("main.more_people") }}" class="glyphicon glyphicon-paperclip"
+                           aria-hidden="true"></a>
+                        <a href="{{ url_for("main.more_people") }}">更多</a>
+                    </li>
+                </ul>
+                <div class="introduce">
+
+                    {{ people(users) }}
+
+                </div>
+                <!--帖子-->
+                <div class="text">
+                    <ul id="ul1">
+                        <li id="li1">热帖</li>
+                        <li id="li2">
+                            <a href="{{ url_for("main.more_message") }}" class="glyphicon glyphicon-paperclip"
+                               aria-hidden="true"></a>
+                            <a href="{{ url_for("main.more_message") }}">更多</a>
+                        </li>
+                    </ul>
+                    <table class="text_table">
+                        <tr>
+                            <td id="td1">内容摘要</td>
+                            <td id="td11">作者</td>
+                            <td id="td12">发表时间</td>
+                        </tr>
+                        {% for post in posts %}
+                            <tr>
+                                <td id="td1"><a>{{ post.content }}</a></td>
+                                <td id="td11">{{ post.user.username }}</td>
+                                <td id="td12">{{ moment(post.timestamp).fromNow() }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    {{ pagination_show(pagination,'main.index') }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

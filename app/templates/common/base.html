@@ -1,0 +1,73 @@
+{% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{#定制标题#}
+{% block title %}默认标题{% endblock %}
+{#定制导航条#}
+{% block navbar %}
+    <nav style="height:50px">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div style="height:100%">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="{{ url_for("main.index") }}">Home</a>
+                </li>
+                <li>
+                    <a href="{{ url_for("main.publish") }}">我要发帖</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('main.information') }}">
+                        进入个人中心
+                    </a>
+                </li>
+                {% if current_user.is_authenticated %}
+
+                    <li style="float:right;list-style-type: none;" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">你好，{{ current_user.username }}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="{{ url_for('users.change_password') }}">修改密码</a></li>
+                            <li><a href="{{ url_for('users.change_email') }}">修改邮箱</a></li>
+                            <li><a href="{{ url_for('users.change_icon') }}">修改头像</a></li>
+                            <li role="separator" class="divider"></li>
+
+                            <li><a href="{{ url_for('main.information') }}">个人中心</a></li>
+                        </ul>
+                    </li>
+                    <li style="float:right;list-style-type: none;"><a href="{{ url_for('users.logout') }}">退出</a></li>
+                        {% else %}
+                            <li style="float:right;list-style-type: none;"><a href="{{ url_for('users.register') }}">注册</a></li>
+                            <li style="float:right;list-style-type: none;"><a href="{{ url_for('users.login') }}">登陆</a></li>
+                {% endif %}
+
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+
+    </nav>
+{% endblock %}
+{#定制内容 #}
+{% block content %}
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <strong>Warning!</strong>{{ message }}
+            </div>
+        {% endfor %}
+
+        {% block page_content %}
+            默认内容
+        {% endblock %}
+    </div>
+{% endblock %}
+{#定制脚本#}
+{% block scripts %}
+    {{ super() }}
+    {{ moment.include_moment() }}
+    {{ moment.locale('zh-CN') }}
+{% endblock %}

@@ -1,0 +1,59 @@
+
+{% block head %}
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='images/favicon.ico') }}">
+{% endblock %}
+{% block body %}
+    {% include 'common/kesheheader.html' %}
+    <div class="container">
+	    <div class="row clearfix">
+		<div class="col-md-12 column">
+			<ul class="breadcrumb">
+				<li>
+					 <a href="#">Home</a>
+				</li>
+				<li>
+					 <a href="#">我要发帖</a>
+				</li>
+			</ul>
+            <ul id="ul1">
+                    <li id="li1">人气推荐</li>
+                    <li id="li2">
+                        <a href="{{ url_for("more_messages")}}" class="glyphicon glyphicon-paperclip" aria-hidden="true"></a>
+                        <a href="{{ url_for("more_people") }}">更多</a>
+                    </li>
+            </ul>
+
+            {{ people(users) }}
+
+                </div>
+            </div>
+            <!--帖子-->
+            <div class="text">
+                <ul id="ul1">
+                    <li id="li1">热帖</li>
+                    <li id="li2">
+                        <a href="{{ url_for("more_messages")}}" class="glyphicon glyphicon-paperclip" aria-hidden="true"></a>
+                        <a href="{{ url_for("more_messages")}}">更多</a>
+                    </li>
+                </ul>
+                <table class="text_table">
+                    <tr>
+                        <td>标题</td>
+                        <td>发帖人</td>
+                        <td>回复数</td>
+                        <td>人气</td>
+                    </tr>
+                    {% for message in messages %}
+                        <tr>
+                            <td id="td3"><a href="#">{{ message.title }}</a></td>
+                            <td id="td4">{{ message.author }}</td>
+                            <td id="td4">{{ message.answerCounts }}</td>
+                            <td id="td4">{{ message.zan }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+		</div>
+	</div>
+    </div>
+{% endblock %}

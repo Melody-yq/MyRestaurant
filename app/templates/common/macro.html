@@ -1,0 +1,78 @@
+{#第一个参数 pagination对象 第二个 跳转到哪里去#}
+{% macro pagination_show(pagination,endpoint) %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            {#      上一页#}
+            <li {% if not pagination.has_prev %} class="disabled" {% else %} {% endif %}>
+                <a href="
+
+
+                        {% if pagination.has_prev %}{{ url_for(endpoint,page=pagination.prev_num,**kwargs) }}{% else %}#{% endif %}"
+                   aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {#      中间页码#}
+            {% for p in pagination.iter_pages() %}
+                {% if p %}
+                    {#            www.baidu.com?page=#}
+                    <li {% if pagination.page == p %} class="active" {% endif %}><a
+                            href="{{ url_for(endpoint,page=p,**kwargs) }}">{{ p }}</a></li>
+                {% else %}
+                    <li><a href="#">&hellip;</a></li>
+                {% endif %}
+
+            {% endfor %}
+            {#      下一页#}
+            <li {% if not pagination.has_next %} class="disabled" {% else %}{% endif %}>
+                <a href="
+
+
+                        {% if pagination.has_next %}{{ url_for(endpoint,page=pagination.next_num,**kwargs) }}{% else %}#{% endif %}"
+                   aria-label="Previous">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+{% endmacro %}
+
+{% macro message(messages) %}
+    {% for message in messages %}
+        <tr>
+            <td id="td3"><a href="#">{{ message.title }}</a></td>
+            <td id="td4">{{ message.author }}</td>
+            <td id="td4">{{ message.answerCounts }}</td>
+            <td id="td4">{{ message.zan }}</td>
+        </tr>
+    {% endfor %}
+{% endmacro %}
+{% macro people(users) %}
+    {% for user in users %}
+        <div class="introduce1">
+            <div style="float:left;border:1px solid red;">
+{#                os.path.join(current_app.config['UPLOADED_PHOTOS_DEST'],user.icon)#}
+{#                <img id="img" src="{{ 'static\upload\'+user.icon }}">#}
+                <img id="img" src="{{ url_for('static',filename='upload/'+user.icon) }}">
+            </div>
+            <div id="divIntro">
+                <div id="divN">{{ user.username }}</div>
+                <div id="divG">
+                    <a href="#">
+                        <button>关注</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endmacro %}
+{% macro post(posts) %}
+    {% for post in posts %}
+        <tr>
+            <td id="td1">{{ post.content }}</td>
+            <td id="td2">{{ post.user.username }}</td>
+{#            <td id="td3">{{ moment(post.timestamp).fromNow() }}</td>#}
+            <td id="td3">{{ post.timestamp }}</td>
+        </tr>
+    {% endfor %}
+{% endmacro %}

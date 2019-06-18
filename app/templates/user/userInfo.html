@@ -1,0 +1,94 @@
+{% from 'common/macro.html' import pagination_show %}
+{#{% extends 'common/base.html' %}#}
+{% block content %}
+    {% include 'common/kesheheader.html' %}
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <ul class="nav nav-tabs" style="height:40px">
+                    <li class="active">
+                        <a href="{{ url_for('main.index') }}">返回首页</a>
+                    </li>
+                    <li class="disabled">
+                        <a href="#">个人中心</a>
+                    </li>
+                    <li class="dropdown pull-right">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">修改<strong class="caret"></strong></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ url_for('users.change_password') }}">修改密码</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('users.change_email') }}">修改邮箱</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('users.change_icon') }}">修改头像</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-6 column">
+                <ul id="ul1"><li id="li1" style="font-size:14px;margin-left:-35px;">个人基本资料</li></ul>
+                <div id="inf1">
+                    <div class="inf1">
+                        <div class="div_icon">
+                            <img class="Icon" src="static/upload/{{ current_user.icon }}"
+                                 onerror="this.src='static/images/default.jpg'"/>
+                        </div>
+                        <a href="{{ url_for('users.change_icon') }}">
+                            <button>修改头像</button>
+                        </a>
+                    </div>
+                    <div class="inf2">
+                        <table id="infoTable">
+                            <tr>
+                                <td>用户名：</td>
+                                <td>{{ current_user.username }}</td>
+                            </tr>
+                            <tr>
+                                <td>邮箱:</td>
+                                <td>{{ current_user.email }}</td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 column">
+                <ul id="ul1">
+                    <li id="li1" ><p style="font-size:14px">我的帖子</p></li>
+                    <li id="li2">
+                        <a href="{{ url_for('main.publish') }}"><p style="font-size:14px">我要发帖</p></a>
+                    </li>
+                </ul>
+                <div style="width:100%;margin-top:10px;">
+                    <table style="width:98%;height:260px;border: 1px solid red;margin-top:10px;">
+                        <tr style="margin-left:15px">
+                            <td style="width:70%;font-size:20px">内容摘要</td>
+                            <td style="width:30%;font-size:20px">发表时间</td>
+                        </tr>
+                        {% for post in posts %}
+                            <tr style="margin-left:5px">
+                                <td style="width:70%"><a>{{ post.content }}</a></td>
+
+                                <td style="width:30%">{{ moment(post.timestamp).fromNow() }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <div style="margin-left:0px">
+                        {{ pagination_show(pagination,'main.index') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block scripts %}
+{#    {{ super() }}#}
+    {{ moment.include_moment() }}
+    {{ moment.locale('zh-CN') }}
+{% endblock %}

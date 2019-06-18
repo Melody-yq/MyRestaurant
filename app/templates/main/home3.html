@@ -1,0 +1,71 @@
+{% extends 'common/base.html' %}
+{% from 'common/macro.html' import message,people,post,pagination_show %}
+{% block title %}
+    shouye
+{% endblock %}
+{% block styles %}
+    {{ supper }}
+    <link rel="stylesheet" href="{{ url_for('static',filename="css/common.css") }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+{% endblock %}
+{#{% block navbar %}#}
+{#这是导航栏#}
+{#{% endblock %}#}
+{% block page_content %}
+     <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+
+                <ul id="ul1">
+                    <li id="li1">人气推荐</li>
+                    <li id="li2">
+                        <a href="{{ url_for("main.more_people") }}" class="glyphicon glyphicon-paperclip"
+                           aria-hidden="true"></a>
+                        <a href="{{ url_for("main.more_people") }}">更多</a>
+                    </li>
+                </ul>
+                <div class="introduce">
+
+                    {{ people(users) }}
+
+                </div>
+                <!--帖子-->
+                <div class="text">
+                    <ul id="ul1">
+                        <li id="li1">热帖</li>
+                        <li id="li2">
+                            <a href="{{ url_for("main.more_message") }}" class="glyphicon glyphicon-paperclip"
+                               aria-hidden="true"></a>
+                            <a href="{{ url_for("main.more_message") }}">更多</a>
+                        </li>
+                    </ul>
+                    <table class="text_table">
+                        <tr>
+                            <td id="td1">内容摘要</td>
+                            <td id="td11">作者</td>
+                            <td id="td12">发表时间</td>
+                        </tr>
+                        {% for post in posts %}
+                            <tr>
+                                <td id="td1"><a>{{ post.content }}</a></td>
+                                <td id="td11">{{ post.user.username }}</td>
+                                <td id="td12">{{ moment(post.timestamp).fromNow() }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <div style="margin-left:420px">
+                        {{ pagination_show(pagination,'main.index') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    {{ super() }}
+    {{ moment.include_moment() }}
+    {{ moment.locale('zh-CN') }}
+{% endblock %}
